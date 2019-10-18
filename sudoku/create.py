@@ -1,3 +1,8 @@
+'''
+    Created on October 15th
+    @author: Samuel Skipper
+'''
+
 import hashlib
 
 def _create(parms):
@@ -9,8 +14,11 @@ def _create(parms):
                 '5' : [-2, 0, 0, 0, -5, 0, -9, -1, 0, -6, 0, 0, 0, 0, -8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -3, 0, 0, -2, -4, 0, 0, 0, 0, 0, 0, 0, 0, 0, -4, 0, 0, 0, 0, -7, 0, -9, -3, 0, -1, 0, -5, 0, 0, 0, 0, 0, 0, 0, -7, 0, 0, -2, 0, -1, 0, 0, -3, 0, 0, -5, 0, -4, 0, 0, -6, 0, 0, 0, 0, 0]
                 }
     
-    integrityDict = [None] * 6
+    #Setting length of lists
+    integrityList = [None] * 6
     dictList = [None] * 81
+    
+    #For each key from the grid dictionary, create a list in column major order, then hash
     for key in gridDict:
         stringHash = ""
         counter = 0
@@ -23,41 +31,39 @@ def _create(parms):
         for index in range(len(dictList)):
             stringHash = stringHash + str(dictList[index])
 
-        integrityDict[int(key)] = hashlib.sha256(stringHash.encode('utf-8')).hexdigest()
+        integrityList[int(key)] = hashlib.sha256(stringHash.encode('utf-8')).hexdigest()
         
         level1Grid = {
             'grid' : str(gridDict['1']),
-            'integrity' : str(integrityDict[1]),
+            'integrity' : str(integrityList[1]),
             'status' : "ok"
             }
         
         level2Grid = {
             'grid' : str(gridDict['2']),
-            'integrity' : str(integrityDict[2]),
+            'integrity' : str(integrityList[2]),
             'status' : "ok"
             }
         
         level3Grid = {
             'grid' : str(gridDict['3']),
-            'integrity' : str(integrityDict[3]),
+            'integrity' : str(integrityList[3]),
             'status' : "ok"
             }
         
         level4Grid = {
             'grid' : str(gridDict['4']),
-            'integrity' : str(integrityDict[4]),
+            'integrity' : str(integrityList[4]),
             'status' : "ok"
             }
         
         level5Grid = {
             'grid' : str(gridDict['5']),
-            'integrity' : str(integrityDict[5]),
+            'integrity' : str(integrityList[5]),
             'status' : "ok"
             }
 
-
     result = parms["level"]      
-    
     if (result == '1'):
         return level1Grid
     elif (result == '2'):
@@ -68,6 +74,5 @@ def _create(parms):
         return level4Grid
     elif (result == '5'):
         return level5Grid
-
-
+    
     return {'status':'error: invalid level'}
