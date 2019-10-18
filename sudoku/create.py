@@ -10,7 +10,7 @@ def _create(parms):
                 '5' : [-2, 0, 0, 0, -5, 0, -9, -1, 0, -6, 0, 0, 0, 0, -8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -3, 0, 0, -2, -4, 0, 0, 0, 0, 0, 0, 0, 0, 0, -4, 0, 0, 0, 0, -7, 0, -9, -3, 0, -1, 0, -5, 0, 0, 0, 0, 0, 0, 0, -7, 0, 0, -2, 0, -1, 0, 0, -3, 0, 0, -5, 0, -4, 0, 0, -6, 0, 0, 0, 0, 0]
                 }
     
-    integrityDict = {}
+    integrityDict = [None] * 6
     dictList = [None] * 81
     for key in gridDict:
         stringHash = ""
@@ -29,13 +29,15 @@ def _create(parms):
             stringHash = stringHash + str(dictList[index])
     
         #integrityDict[key] = stringHash
-        integrityDict[key] = hashlib.sha256(stringHash.encode('utf-8')).hexdigest()
+        integrityDict[int(key)] = hashlib.sha256(stringHash.encode('utf-8')).hexdigest()
         
         level1Grid = {
             'grid' : str(gridDict['1']),
-            'integrity' : str(integrityDict['1']),
+            'integrity' : str(integrityDict[1]),
             'status' : "ok"
             }
+        
+        print(str(integrityDict[2]))
 
 
     #result = {'status': 'create stub'}
@@ -47,7 +49,7 @@ def _create(parms):
         if (result == '1'):
             return level1Grid
         elif (result == '2'):
-            levelReturn = "This is level two"
+            pass
         elif (result == '3' or result == ""):
             levelReturn = "This is level three"
         elif (result == '4'):
