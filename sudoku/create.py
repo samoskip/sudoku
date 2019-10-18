@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 def _create(parms):
     #result = {'status': 'create stub'}
     if (not ("level" in parms)):
@@ -10,7 +11,7 @@ def _create(parms):
             levelReturn = "This is level one"
         elif (levelNum == 2):
             levelReturn = "This is level two"
-        elif (levelNum == 3 or result == ""):
+        elif (levelNum == 3 or result == NULL):
             levelReturn = "This is level three"
         elif (levelNum == 4):
             levelReturn = "This is level four"

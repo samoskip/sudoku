@@ -35,7 +35,7 @@ class CreateTest(TestCase):
         self.assertEqual(sudoku._create(self.testDict), "This is level five")
         
     def test100_050_shouldDefaultToLevel3Stub(self):
-        self.setUpDict("")
+        self.setUpDict()
         self.assertEqual(sudoku._create(self.testDict), "This is level three")
         
 #Sad Path
