@@ -6,9 +6,13 @@ class CreateTest(TestCase):
     
     def setUp(self):
         self.testDict = {}
+        self.INVALIDLEVEL = "{'status':'error: invalid level'}"
         
     def setUpDict(self, setLevel):
         self.testDict["level"] = setLevel
+
+
+
 
     def test100_010_shouldReturnLevel1Stub(self):
         self.setUpDict(1)
@@ -29,3 +33,8 @@ class CreateTest(TestCase):
     def test100_050_shouldReturnLevel5Stub(self):
         self.setUpDict(5)
         self.assertEqual(sudoku._create(self.testDict), "This is level five")
+        
+#Sad Path
+    def test100_910_shouldInvalidError(self):
+        self.setUpDict(0)
+        self.assertEqual(sudoku._create(self.testDict), self.INVALIDLEVEL)

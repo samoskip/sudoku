@@ -14,5 +14,7 @@ def _create(parms):
             levelReturn = "This is level four"
         elif (result == 5):
             levelReturn = "This is level five"
+        elif (result > 5) or (result < 1):
+            levelReturn = "{'status':'error: invalid level'}"
         
     return levelReturn
