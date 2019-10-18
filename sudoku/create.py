@@ -3,7 +3,7 @@ def _create(parms):
     if (not ("level" in parms)):
         result = {'status': 'create stub'}
     else:
-        result = parms["level"]
+        result = int(parms["level"])
         if (result == 1):
             levelReturn = "This is level one"
         elif (result == 2):
@@ -16,5 +16,6 @@ def _create(parms):
             levelReturn = "This is level five"
         elif (result > 5) or (result < 1):
             levelReturn = "{'status':'error: invalid level'}"
+
         
     return levelReturn
