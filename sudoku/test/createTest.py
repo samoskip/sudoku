@@ -6,7 +6,7 @@ class CreateTest(TestCase):
     
     def setUp(self):
         self.testDict = {}
-        self.INVALIDLEVEL = "{'status':'error: invalid level'}"
+        self.INVALIDLEVEL = {'status':'error: invalid level'}
         
     def setUpDict(self, setLevel):
         self.testDict["level"] = setLevel
