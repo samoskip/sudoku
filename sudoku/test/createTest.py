@@ -65,7 +65,7 @@ class CreateTest(TestCase):
         
     def test100_050_shouldDefaultToLevel3Full(self):
         self.setUpDict('3')
-        self.assertEqual(sudoku._create(self.testDict), self.level2Grid)    
+        self.assertEqual(sudoku._create(self.testDict), self.level3Grid)    
         
 #Sad Path
     def test100_910_ZeroShouldReturnInvalidError(self):
