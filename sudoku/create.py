@@ -56,21 +56,18 @@ def _create(parms):
             }
 
 
-    if (not ("level" in parms)):
-        result = {'status': 'create stub'}
-    else:
-        result = parms["level"]      
-        
-        if (result == '1'):
-            return level1Grid
-        elif (result == '2'):
-            return level2Grid
-        elif (result == '3' or result == ""):
-            return level3Grid
-        elif (result == '4'):
-            return level4Grid
-        elif (result == '5'):
-            return level5Grid
+    result = parms["level"]      
+    
+    if (result == '1'):
+        return level1Grid
+    elif (result == '2'):
+        return level2Grid
+    elif (result == '3' or result == ""):
+        return level3Grid
+    elif (result == '4'):
+        return level4Grid
+    elif (result == '5'):
+        return level5Grid
 
 
     return {'status':'error: invalid level'}
