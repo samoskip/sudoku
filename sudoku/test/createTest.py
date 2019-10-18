@@ -12,6 +12,11 @@ class CreateTest(TestCase):
             'integrity' : '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5',
             'status' : "ok"
             }
+        self.level2Grid = {
+            'grid' : '[0, -3, 0, 0, 0, -2, 0, -6, -5, -5, -8, 0, -1, -3, -4, 0, -2, -9, 0, -2, -7, 0, -5, 0, 0, 0, -1, 0, 0, -2, 0, 0, -9, 0, -1, -3, -8, -5, -9, 0, -7, -1, 0, -4, -2, -1, 0, 0, -6, -2, 0, 0, 0, -7, 0, 0, 0, 0, -4, -7, -2, -5, 0, -6, -7, -5, 0, 0, -8, 0, -9, 0, 0, -9, -4, -5, -6, 0, 0, -7, -8]',
+            'integrity' : '39a4fbe2283d82b8dff98f36e6fcb09e6071653a77795e9527b26f90b4ad0d26',
+            'status' : "ok"
+            }
         
     def setUpDict(self, setLevel):
         self.testDict["level"] = setLevel
@@ -45,7 +50,11 @@ class CreateTest(TestCase):
         
     def test100_050_shouldDefaultToLevel1Full(self):
         self.setUpDict('1')
-        self.assertEqual(sudoku._create(self.testDict), self.level1Grid)        
+        self.assertEqual(sudoku._create(self.testDict), self.level1Grid)
+        
+    def test100_050_shouldDefaultToLevel2Full(self):
+        self.setUpDict('2')
+        self.assertEqual(sudoku._create(self.testDict), self.level2Grid)    
         
 #Sad Path
     def test100_910_ZeroShouldReturnInvalidError(self):
