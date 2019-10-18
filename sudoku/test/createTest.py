@@ -17,3 +17,7 @@ class CreateTest(TestCase):
     def test100_020_shouldReturnLevel2Stub(self):
         self.setUpDict(2)
         self.assertEqual(sudoku._create(self.testDict), "This is level two")
+
+    def test100_030_shouldReturnLevel3Stub(self):
+        self.setUpDict(3)
+        self.assertEqual(sudoku._create(self.testDict), "This is level three")
