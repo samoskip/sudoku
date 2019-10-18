@@ -39,6 +39,10 @@ class CreateTest(TestCase):
         self.assertEqual(sudoku._create(self.testDict), "This is level three")
         
 #Sad Path
-    def test100_910_shouldReturnInvalidError(self):
+    def test100_910_ZeroShouldReturnInvalidError(self):
         self.setUpDict('0')
+        self.assertEqual(sudoku._create(self.testDict), self.INVALIDLEVEL)
+        
+    def test100_920_StringShouldReturnInvalidError(self):
+        self.setUpDict('foo')
         self.assertEqual(sudoku._create(self.testDict), self.INVALIDLEVEL)
