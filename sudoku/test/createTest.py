@@ -8,7 +8,7 @@ class CreateTest(TestCase):
         self.testDict = {}
         
     def setUpDict(self, setLevel):
-        self.testDict["level"] = 1
+        self.testDict["level"] = setLevel
 
     def test100_010_shouldReturnLevel1Stub(self):
         self.setUpDict(1)
