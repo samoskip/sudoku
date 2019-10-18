@@ -30,6 +30,18 @@ def _create(parms):
     
         #integrityDict[key] = stringHash
         integrityDict[key] = hashlib.sha256(stringHash.encode('utf-8')).hexdigest()
+        
+        level1Grid = {
+            'grid' : gridDict['1'],
+            'integrity' : integrityDict['1'],
+            'status' : "ok"
+            }
+        
+        level2Grid = {
+            'grid' : gridDict['2'],
+            'integrity' : integrityDict['2'],
+            'status' : "ok"
+            }      
 
 
     #result = {'status': 'create stub'}
