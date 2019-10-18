@@ -12,9 +12,16 @@ class CreateTest(TestCase):
             'integrity' : '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5',
             'status' : "ok"
             }
+        
         self.level2Grid = {
             'grid' : '[0, -3, 0, 0, 0, -2, 0, -6, -5, -5, -8, 0, -1, -3, -4, 0, -2, -9, 0, -2, -7, 0, -5, 0, 0, 0, -1, 0, 0, -2, 0, 0, -9, 0, -1, -3, -8, -5, -9, 0, -7, -1, 0, -4, -2, -1, 0, 0, -6, -2, 0, 0, 0, -7, 0, 0, 0, 0, -4, -7, -2, -5, 0, -6, -7, -5, 0, 0, -8, 0, -9, 0, 0, -9, -4, -5, -6, 0, 0, -7, -8]',
             'integrity' : '39a4fbe2283d82b8dff98f36e6fcb09e6071653a77795e9527b26f90b4ad0d26',
+            'status' : "ok"
+            }
+        
+        self.level3Grid = {
+            'grid' : '[0, 0, -3, 0, 0, -7, 0, -2, 0, -4, 0, -7, 0, 0, -5, -3, 0, 0, 0, 0, -8, -9, 0, -6, -7, 0, -1, -8, 0, -2, -5, 0, 0, -6, 0, -4, 0, -7, 0, 0, -8, 0, -1, -5, 0, -5, 0, 0, -7, -6, 0, 0, 0, -9, 0, 0, -5, 0, 0, -9, 0, 0, -6, 0, -1, 0, -6, 0, 0, -2, -8, 0, 0, -2, -4, -1, -7, 0, -5, 0, 0]',
+            'integrity' : 'b594924588d873f60df054a64a7bfaa1d4196ab1d2000f1788a453c1765b05b8',
             'status' : "ok"
             }
         
@@ -32,9 +39,9 @@ class CreateTest(TestCase):
     #    self.setUpDict('2')
     #    self.assertEqual(sudoku._create(self.testDict), "This is level two")
 
-    def test100_030_shouldReturnLevel3Stub(self):
-        self.setUpDict('3')
-        self.assertEqual(sudoku._create(self.testDict), "This is level three")
+    #def test100_030_shouldReturnLevel3Stub(self):
+    #    self.setUpDict('3')
+    #    self.assertEqual(sudoku._create(self.testDict), "This is level three")
         
     def test100_040_shouldReturnLevel4Stub(self):
         self.setUpDict('4')
@@ -54,6 +61,10 @@ class CreateTest(TestCase):
         
     def test100_050_shouldDefaultToLevel2Full(self):
         self.setUpDict('2')
+        self.assertEqual(sudoku._create(self.testDict), self.level2Grid) 
+        
+    def test100_050_shouldDefaultToLevel3Full(self):
+        self.setUpDict('3')
         self.assertEqual(sudoku._create(self.testDict), self.level2Grid)    
         
 #Sad Path
