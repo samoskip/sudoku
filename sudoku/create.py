@@ -36,12 +36,6 @@ def _create(parms):
             'integrity' : integrityDict['1'],
             'status' : "ok"
             }
-        
-        level2Grid = {
-            'grid' : gridDict['2'],
-            'integrity' : integrityDict['2'],
-            'status' : "ok"
-            }      
 
 
     #result = {'status': 'create stub'}
@@ -51,8 +45,7 @@ def _create(parms):
         result = parms["level"]      
         
         if (result == '1'):
-            levelReturn = "This is level one"
-            print(integrityDict['1'])
+            return level1Grid
         elif (result == '2'):
             levelReturn = "This is level two"
         elif (result == '3' or result == ""):
