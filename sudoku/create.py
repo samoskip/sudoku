@@ -32,8 +32,8 @@ def _create(parms):
         integrityDict[key] = hashlib.sha256(stringHash.encode('utf-8')).hexdigest()
         
         level1Grid = {
-            'grid' : gridDict['1'],
-            'integrity' : integrityDict['1'],
+            'grid' : str(gridDict['1']),
+            'integrity' : str(integrityDict['1']),
             'status' : "ok"
             }
 
