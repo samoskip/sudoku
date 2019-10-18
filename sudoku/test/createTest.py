@@ -49,9 +49,9 @@ class CreateTest(TestCase):
     #    self.setUpDict('3')
     #    self.assertEqual(sudoku._create(self.testDict), "This is level three")
         
-    def test100_040_shouldReturnLevel4Stub(self):
-        self.setUpDict('4')
-        self.assertEqual(sudoku._create(self.testDict), "This is level four")
+    #def test100_040_shouldReturnLevel4Stub(self):
+    #    self.setUpDict('4')
+    #    self.assertEqual(sudoku._create(self.testDict), "This is level four")
         
     def test100_050_shouldReturnLevel5Stub(self):
         self.setUpDict('5')
