@@ -41,49 +41,69 @@ class CreateTest(TestCase):
         self.testDict["level"] = setLevel
 
 
-
-
+    # 100 create
+    #    Desired level of confidence:    correct output on finite inputs
+    #    Input-output Analysis
+    #        inputs:        n
+    #        outputs:       dictionary
+    #    Happy path analysis:
+    #                nominal value    n=3
+    #                high bound       n=5
+    #                low bound        n=1
+    #        output:
+    #                The output is the appropriate dictionary for the integer input
+    #                    '1', level1Grid
+    #                    '2', level2Grid
+    #                    '3', level3Grid
+    #                    '4', level4Grid
+    #                    '5', level5Grid
+    #                    '',  level3Grid
+    #    Sad path analysis:
+    #        n:      out-of-bound n   n = 0, n = 6
+    #                string n         n = 'foo'
+    #                non-integer n    n = 4.5
+    # Happy path
     #def test100_010_shouldReturnLevel1Stub(self):
     #    self.setUpDict('1')
     #    self.assertEqual(sudoku._create(self.testDict), "This is level one")
 
-    #def test100_020_shouldReturnLevel2Stub(self):
+    #def test100_011_shouldReturnLevel2Stub(self):
     #    self.setUpDict('2')
     #    self.assertEqual(sudoku._create(self.testDict), "This is level two")
 
-    #def test100_030_shouldReturnLevel3Stub(self):
+    #def test100_012_shouldReturnLevel3Stub(self):
     #    self.setUpDict('3')
     #    self.assertEqual(sudoku._create(self.testDict), "This is level three")
         
-    #def test100_040_shouldReturnLevel4Stub(self):
+    #def test100_013_shouldReturnLevel4Stub(self):
     #    self.setUpDict('4')
     #    self.assertEqual(sudoku._create(self.testDict), "This is level four")
         
-    #def test100_050_shouldReturnLevel5Stub(self):
+    #def test100_014_shouldReturnLevel5Stub(self):
     #    self.setUpDict('5')
     #    self.assertEqual(sudoku._create(self.testDict), "This is level five")
         
-    #def test100_060_shouldDefaultToLevel3Stub(self):
+    #def test100_015_shouldDefaultToLevel3Stub(self):
     #    self.setUpDict("")
     #    self.assertEqual(sudoku._create(self.testDict), "This is level three")
         
-    def test100_070_shouldReturnToLevel1Full(self):
+    def test100_020_shouldReturnToLevel1Full(self):
         self.setUpDict('1')
         self.assertEqual(sudoku._create(self.testDict), self.level1Grid)
         
-    def test100_080_shouldReturnToLevel2Full(self):
+    def test100_021_shouldReturnToLevel2Full(self):
         self.setUpDict('2')
         self.assertEqual(sudoku._create(self.testDict), self.level2Grid) 
         
-    def test100_090_shouldReturnToLevel3Full(self):
+    def test100_022_shouldReturnToLevel3Full(self):
         self.setUpDict('3')
         self.assertEqual(sudoku._create(self.testDict), self.level3Grid)
         
-    def test100_100_shouldReturnToLevel4Full(self):
+    def test100_023_shouldReturnToLevel4Full(self):
         self.setUpDict('4')
         self.assertEqual(sudoku._create(self.testDict), self.level4Grid)
         
-    def test100_110_shouldReturnToLevel5Full(self):
+    def test100_024_shouldReturnToLevel5Full(self):
         self.setUpDict('5')
         self.assertEqual(sudoku._create(self.testDict), self.level5Grid) 
         
@@ -94,4 +114,8 @@ class CreateTest(TestCase):
         
     def test100_920_StringShouldReturnInvalidError(self):
         self.setUpDict('foo')
+        self.assertEqual(sudoku._create(self.testDict), self.INVALIDLEVEL)
+        
+    def test100_920_FloatShouldReturnInvalidError(self):
+        self.setUpDict('2.5')
         self.assertEqual(sudoku._create(self.testDict), self.INVALIDLEVEL)
