@@ -55,6 +55,10 @@ def _create(parms):
             'status' : "ok"
             }
 
+
+    if (not ("level" in parms)):
+        result = {'status': 'create stub'}
+    else:
         result = parms["level"]      
         
         if (result == '1'):
