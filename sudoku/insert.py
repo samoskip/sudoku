@@ -91,6 +91,6 @@ def _insert(parms):
         gridVerticalSearch = gridVerticalSearch - 9
             
     return { 'grid' : grid,
-            'integrity' : integrity,
+            'integrity' : integrityChecked,
             'status' : STATUS
         }
