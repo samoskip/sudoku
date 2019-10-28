@@ -29,7 +29,7 @@ def _insert(parms):
     if "value" in parms:
         value = parms["value"]
     else:
-        value = 0
+        value = '0'
     if (value.isdigit() == False) or (int(value) > 9 or int(value) < 0):
         return VALUEERROR
     
@@ -73,20 +73,20 @@ def _insert(parms):
     
     #Grid Search and Horizontal Search
     for i in range(len(grid)):
-        if (abs(grid[gridPlacement]) == abs(grid[i])) and (i != gridPlacement) and (subSet[gridPlacement] == subSet[i]):
+        if (abs(grid[gridPlacement]) == abs(grid[i])) and (i != gridPlacement) and (subSet[gridPlacement] == subSet[i]) and (grid[gridPlacement] != 0):
             STATUS = 'warning'
-        elif (int(i / 9) == int(gridPlacement / 9)) and (abs(grid[gridPlacement]) == abs(grid[i])) and (i != gridPlacement):
+        elif (int(i / 9) == int(gridPlacement / 9)) and (abs(grid[gridPlacement]) == abs(grid[i])) and (i != gridPlacement) and (grid[gridPlacement] != 0):
             STATUS = 'warning'
     
     #Vertical Search
     gridVerticalSearch = gridPlacement + 9
     while (gridVerticalSearch < 81):
-        if (grid[gridVerticalSearch] == grid[gridPlacement]):
+        if (grid[gridVerticalSearch] == grid[gridPlacement]) and (grid[gridPlacement] != 0):
             STATUS = 'warning'
         gridVerticalSearch = gridVerticalSearch + 9
     gridVerticalSearch = gridPlacement - 9
     while (gridVerticalSearch > -1):
-        if (grid[gridVerticalSearch] == grid[gridPlacement]):
+        if (grid[gridVerticalSearch] == grid[gridPlacement]) and (grid[gridPlacement] != 0):
             STATUS = 'warning'
         gridVerticalSearch = gridVerticalSearch - 9
             
