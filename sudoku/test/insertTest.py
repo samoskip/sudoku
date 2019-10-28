@@ -25,7 +25,7 @@ class InsertTest(TestCase):
                           'status': 'ok'} 
             
     def setUpDict(self, setCell, setValue, setGrid, setIntegrity):
-        if cellValue != 'null':
+        if setCell != 'null':
             self.testDict["cell"] = setCell
         if setValue != 'null':
             self.testDict["value"] = setValue
