@@ -12,15 +12,24 @@ class InsertTest(TestCase):
         
     def setUpDict(self, setCell, setValue, setGrid, setIntegrity):
         self.testDict["cell"] = setCell
-        self.testDict["value"] = setValue
+        if setValue != 'null':
+            self.testDict["value"] = setValue
         self.testDict["grid"] = setGrid
         self.testDict["integrity"] = setIntegrity
         
     def gridsToCall(self, gridNumber):
         if (gridNumber == '1'):
             return '[-8,-1,-5,-7,-6,-9,-3,-2,0,-4,-9,0,0,0,-5,-8,-7,0,0,0,-6,0,-4,-8,0,-9,-5,0,-8,-1,0,0,-3,0,0,-2,0,-5,0,-1,-8,0,-9,0,-7,-7,-3,-9,-5,-2,-4,-6,-8,-1,-9,-4,0,0,0,-7,0,-1,-8,-5,-2,0,-8,-9,0,-4,-6,-3,-1,-6,0,-4,-3,-2,-7,0,0]'
+        if (gridNumber == '2'):
+            return '[-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, -7, 0, 3, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 0, 0, -2, 0, -5, 0, -1, -8, 0, -9, 0, -7, -7, -3, -9, -5, -2, -4, -6, -8, -1, -9, -4, 0, 0, 0, -7, 0, -1, -8, -5, -2, 0, -8, -9, 0, -4, -6, -3, -1, -6, 0, -4, -3, -2, -7, 0, 0]'
+        
         
     def test100_010_shouldInsertValueIntoNomialSpace(self):
         self.maxDiff = None
         self.setUpDict('r3c1', '3', self.gridsToCall('1'), '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5')
+        self.assertEqual(sudoku._insert(self.testDict), self.test1Grid)
+        
+    def test100_010_shouldRemoveValueFromNomialSpace(self):
+        self.maxDiff = None
+        self.setUpDict('r3c1', 'null', self.gridsToCall('1'), '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5')
         self.assertEqual(sudoku._insert(self.testDict), self.test1Grid)
