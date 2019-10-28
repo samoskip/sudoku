@@ -26,9 +26,13 @@ def _insert(parms):
         return CELLERROR
 
     #value
-    value = parms["value"]
-    if (value.isdigit() == False) or (int(value) > 9 or int(value) < 1):
+    if "value" in parms:
+        value = parms["value"]
+    else:
+        value = 0
+    if (value.isdigit() == False) or (int(value) > 9 or int(value) < 0):
         return VALUEERROR
+    
     
     #grid
     if "grid" in parms:
