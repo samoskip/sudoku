@@ -52,7 +52,12 @@ class InsertTest(TestCase):
         self.setUpDict('r3c1', '4', self.gridsToCall('1'), '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5')
         self.assertEqual(sudoku._insert(self.testDict), self.test3Grid)
         
-    def test900_030_shouldReturnCellError(self):
+    def test900_010_shouldReturnCellError(self):
         self.maxDiff = None
         self.setUpDict('r3c0', '3', self.gridsToCall('1'), '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5')
         self.assertEqual(sudoku._insert(self.testDict), self.error1)
+        
+    def test900_020_shouldReturnMissingCellError(self):
+        self.maxDiff = None
+        self.setUpDict('', '3', self.gridsToCall('1'), '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5')
+        self.assertEqual(sudoku._insert(self.testDict), self.error2)
