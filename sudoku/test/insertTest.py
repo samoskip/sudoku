@@ -25,7 +25,8 @@ class InsertTest(TestCase):
                           'status': 'ok'} 
             
     def setUpDict(self, setCell, setValue, setGrid, setIntegrity):
-        self.testDict["cell"] = setCell
+        if cellValue != 'null':
+            self.testDict["cell"] = setCell
         if setValue != 'null':
             self.testDict["value"] = setValue
         self.testDict["grid"] = setGrid
@@ -60,5 +61,5 @@ class InsertTest(TestCase):
         
     def test900_020_shouldReturnMissingCellError(self):
         self.maxDiff = None
-        self.setUpDict('', '3', self.gridsToCall('1'), '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5')
+        self.setUpDict('null', '3', self.gridsToCall('1'), '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5')
         self.assertEqual(sudoku._insert(self.testDict), self.error2)
