@@ -68,6 +68,19 @@ def _insert(parms):
 
     if (int(grid[gridPlacement]) > -1):
         grid[gridPlacement] = int(value)
+        stringHash = ""
+        dictList = [None] * 81
+        counter = 0
+        for index in grid:
+            if (counter == 0 or counter == 80):
+                dictList[counter] = index
+            else:
+                dictList[(counter * 9) % 80] = index
+            counter = counter + 1
+        for index in range(len(dictList)):
+            stringHash = stringHash + str(dictList[index])
+        newIntegrity = hashlib.sha256(stringHash.encode('utf-8')).hexdigest() 
+        
     else:
         return FIXEDERROR
     
@@ -91,6 +104,6 @@ def _insert(parms):
         gridVerticalSearch = gridVerticalSearch - 9
             
     return { 'grid' : grid,
-            'integrity' : integrityChecked,
+            'integrity' : newIntegrity,
             'status' : STATUS
         }
