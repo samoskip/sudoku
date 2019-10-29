@@ -4,7 +4,6 @@
 '''
 
 import hashlib
-
 def _insert(parms):
     
     #Errors to be called
