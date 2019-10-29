@@ -1,3 +1,8 @@
+'''
+    Created on October 26th
+    @author: Samuel Skipper
+'''
+
 import hashlib
 
 def _insert(parms):
