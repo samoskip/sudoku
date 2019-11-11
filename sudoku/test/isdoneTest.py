@@ -77,13 +77,13 @@ class IsdoneTest(TestCase):
         self.setUpDict(self.gridsToCall('2'), '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5')
         self.assertEqual(sudoku._isdone(self.testDict), self.WARNING)
         
-    """
+    
     def test100_020_solvingSolvedGrid(self):
         self.maxDiff = None
         self.setUpDict(self.gridsToCall('3'), 'e33e2de2fdbb25aacf25b299e101cccfdd2e1be4284acc257bcdc76737272af6')
         self.assertEqual(sudoku._isdone(self.testDict), self.WARNING)   
     
-    
+    """
     #Sad Path    
     def test900_010_invalidGirdInput(self):
         self.maxDiff = None
