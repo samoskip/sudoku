@@ -28,6 +28,10 @@ class SolveTest(TestCase):
         self.test4Grid = {'grid': [-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, -7, 0, 0, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 0, 0, -2, 0, -5, 0, -1, -8, 0, -9, 0, -7, -7, -3, -9, -5, -2, -4, -6, -8, -1, -9, -4, 0, 0, 0, -7, 0, -1, -8, -5, -2, 0, -8, -9, 0, -4, -6, -3, -1, -6, 0, -4, -3, -2, -7, 0, 0],
                           'integrity': '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5',
                           'status': 'ok'} 
+        
+        self.test5Grid = {'grid': [4, -5, -8, -9, 3, -1, -6, 7, 2, -2, 3, 7, -5, -8, 6, 9, -4, -1, -9, 6, 1, 7, 4, 2, 3, -5, 8, -3, 9, -6, -1, -5, 7, 8, -2, 4, -1, -4, 5, 3, -2, 8, -7, 6, -9, 7, 8, 2, 4, -6, 9, -5, 1, 3, 6, -1, -3, -2, 9, 5, -4, -8, -7, 8, 2, -4, 6, 7, -3, 1, 9, 5, -5, 7, 9, -8, -1, 4, -2, 3, 6],
+                          'integrity': 'e33e2de2fdbb25aacf25b299e101cccfdd2e1be4284acc257bcdc76737272af6',
+                          'status':'ok'}
             
     def setUpDict(self, setGrid, setIntegrity):
         self.testDict["grid"] = setGrid
@@ -42,81 +46,52 @@ class SolveTest(TestCase):
             return '[-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, -7, 0, 0, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 0, 0, -2, 0, -5, 0, -1, -8, 0, -9, 0, -7, -7, -3, -9, -5, -2, -4, -6, -8, -1, -9, -4, 0, 0, 0, -7, 0, -1, -8, -5, -2, 0, -8, -9, 0, -4, -6, -3, -1, -6, 0, -4, -3, -2, -7, 0, 0]'
         if (gridNumber == '4'):
             return '[-8,-1,-5,-7,-6,-9,-3,-2,8,-4,-9,0,0,0,-5,-8,-7,0,0,0,-6,0,-4,-8,0,-9,-5,0,-8,-1,0,0,-3,0,0,-2,0,-5,0,-1,-8,0,-9,0,-7,-7,-3,-9,-5,-2,-4,-6,-8,-1,-9,-4,0,0,0,-7,0,-1,-8,-5,-2,0,-8,-9,0,-4,-6,-3,-1,-6,0,-4,-3,-2,-7,0,0]'
-
+        if (gridNumber == '5'):
+            return '[0,-5,-8,-9,0,-1,-6,0,0,-2,0,0,-5,-8,0,0,-4,-1,-9,0,0,0,0,0,0,-5,0,-3,0,-6,-1,-5,0,0,-2,0,-1,-4,0,0,-2,0,-7,0,-9,0,0,0,0,-6,0,-5,0,0,0,-1,-3,-2,0,0,-4,-8,-7,0,0,-4,0,0,-3,0,0,0,-5,0,0,-8,-1,0,-2,0,0]'
     # 100 create
     #    Desired level of confidence:    correct output on finite inputs
     #    Input-output Analysis
     #        inputs:       string
     #        outputs:       dictionary
     #    Happy path analysis:
-    #                nominal cell        n=3
-    #                remove cell         n=5
-    #                warning cell        n=1
+    #                answers a solvable grid
     #        output:
-    #                The output is the appropriate input from user to modify grid
+    #                The output is from backtracking algorithm within the rules of sudoku
     #
     #    Sad path analysis:
-    #                missing cell
-    #                invalid cell
-    #                invalid modify
+    #                not solvable
+    #                invalid length
     #                invalid grid
     #                integrity mismatch
     
-    #Happy Path    
-    def test900_010_shouldInsertValueIntoNomialSpace(self):
+    
+    
+    #Happy Path
+    def test100_010_invalidGirdInput(self):
+        self.maxDiff = None
+        self.setUpDict(self.gridsToCall('5'), '6594d6506dc349fdbd9e5dda58acfa8d563657b0ef8bfc3a24ea53df9c988f9b')
+        self.assertEqual(sudoku._solve(self.testDict), self.test5Grid)    
+    
+    
+    
+    
+    #Sad Path    
+    def test900_010_invalidGirdInput(self):
         self.maxDiff = None
         self.setUpDict(self.gridsToCall('1'), '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5')
         self.assertEqual(sudoku._solve(self.testDict), self.INVALIDGRID)
         
-    def test900_020_shouldInsertValueIntoNomialSpace(self):
+    def test900_020_invalidLength(self):
         self.maxDiff = None
         self.setUpDict(self.gridsToCall('2'), '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5')
         self.assertEqual(sudoku._solve(self.testDict), self.INVALIDLENGTH)
         
-    def test900_030_shouldInsertValueIntoNomialSpace(self):
+    def test900_030_integrityMismatched(self):
         self.maxDiff = None
         self.setUpDict(self.gridsToCall('3'), '000000000')
         self.assertEqual(sudoku._solve(self.testDict), self.INTEGRITYERROR)
         
-    def test900_040_shouldInsertValueIntoNomialSpace(self):
+    def test900_040_gridNotSolavable(self):
         self.maxDiff = None
         self.setUpDict(self.gridsToCall('4'), 'fb798a9148fd1854800420123530ec8a2f2ef00731d386b26eb69cb4bf9b8ffc')
         self.assertEqual(sudoku._solve(self.testDict), self.NOTSOLVABLE)
-        
-    '''   
-    def test100_020_shouldRemoveValueFromNomialSpace(self):
-        self.maxDiff = None
-        self.setUpDict('r3c1', 'null', self.gridsToCall('1'), '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5')
-        self.assertEqual(sudoku._insert(self.testDict), self.test2Grid)
-        
-    def test100_030_shouldRemoveValueFromNomialSpace(self):
-        self.maxDiff = None
-        self.setUpDict('r3c1', '4', self.gridsToCall('1'), '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5')
-        self.assertEqual(sudoku._insert(self.testDict), self.test3Grid)
-    
-    #Sad path    
-    def test900_010_shouldReturnCellError(self):
-        self.maxDiff = None
-        self.setUpDict('r3c0', '3', self.gridsToCall('1'), '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5')
-        self.assertEqual(sudoku._insert(self.testDict), self.errorInvalidCell)
-        
-    def test900_020_shouldReturnMissingCellError(self):
-        self.maxDiff = None
-        self.setUpDict('null', '3', self.gridsToCall('1'), '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5')
-        self.assertEqual(sudoku._insert(self.testDict), self.errorMissingCell)
-        
-    def test900_030_shouldReturnFixedHintError(self):
-        self.maxDiff = None
-        self.setUpDict('r1c1', '3', self.gridsToCall('1'), '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5')
-        self.assertEqual(sudoku._insert(self.testDict), self.errorHint)
-        
-    def test900_040_shouldReturnInvalidGridError(self):
-        self.maxDiff = None
-        self.setUpDict('r3c1', '3', self.gridsToCall('2'), '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5')
-        self.assertEqual(sudoku._insert(self.testDict), self.errorGrid)
-        
-    def test900_040_shouldReturnIntegrityMismatchError(self):
-        self.maxDiff = None
-        self.setUpDict('r3c1', '3', self.gridsToCall('1'), '0000000000000000000000000000000000000000000000000000000000000000000')
-        self.assertEqual(sudoku._insert(self.testDict), self.errorIntegrity)
-    '''
