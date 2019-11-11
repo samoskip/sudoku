@@ -43,12 +43,12 @@ def _isdone(parms):
             #Vertical Search
             gridVerticalSearch = gridPlacement
             while (gridVerticalSearch < 81):
-                if (abs(grid[gridVerticalSearch]) == abs(grid[gridPlacement])) and (gridVerticalSearch != gridPlacement):
+                if (abs(grid[gridVerticalSearch]) == abs(grid[gridPlacement])) and (gridVerticalSearch != gridPlacement) and (grid[gridVerticalSearch]) != 0:
                     return WARNING
                 gridVerticalSearch = gridVerticalSearch + 9
             gridVerticalSearch = gridPlacement
             while (gridVerticalSearch > -1):
-                if (abs(grid[gridVerticalSearch]) == abs(grid[gridPlacement])) and (gridVerticalSearch != gridPlacement):
+                if (abs(grid[gridVerticalSearch]) == abs(grid[gridPlacement])) and (gridVerticalSearch != gridPlacement) and (grid[gridVerticalSearch]) != 0:
                     return WARNING
                 gridVerticalSearch = gridVerticalSearch - 9   
                 
