@@ -35,9 +35,9 @@ def _isdone(parms):
         for y in range (1, 10):
             gridPlacement = (9 * (x - 1)) + ((y - 1))
             for i in range(len(grid)):
-                if (abs(grid[gridPlacement]) == abs(grid[i])) and (i != gridPlacement) and (subSet[gridPlacement] == subSet[i]) and ((grid[gridPlacement] > 0) and grid[i] > 0):
+                if (abs(grid[gridPlacement]) == abs(grid[i])) and (i != gridPlacement) and (subSet[gridPlacement] == subSet[i]) and ((grid[gridPlacement] > 0) or grid[i] > 0):
                     return WARNING
-                elif (int(i / 9) == int(gridPlacement / 9)) and (abs(grid[gridPlacement]) == abs(grid[i])) and (i != gridPlacement) and ((grid[gridPlacement] > 0) and grid[i] > 0):
+                elif (int(i / 9) == int(gridPlacement / 9)) and (abs(grid[gridPlacement]) == abs(grid[i])) and (i != gridPlacement) and ((grid[gridPlacement] > 0) or grid[i] > 0):
                     return WARNING
 
             #Vertical Search
