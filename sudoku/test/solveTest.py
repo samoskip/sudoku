@@ -37,7 +37,7 @@ class SolveTest(TestCase):
         if (gridNumber == '1'):
             return '[a,-1,-5,-7,-6,-9,-3,-2,0,-4,-9,0,0,0,-5,-8,-7,0,0,0,-6,0,-4,-8,0,-9,-5,0,-8,-1,0,0,-3,0,0,-2,0,-5,0,-1,-8,0,-9,0,-7,-7,-3,-9,-5,-2,-4,-6,-8,-1,-9,-4,0,0,0,-7,0,-1,-8,-5,-2,0,-8,-9,0,-4,-6,-3,-1,-6,0,-4,-3,-2,-7,0,0]'
         if (gridNumber == '2'):
-            return '[a,-1,-5,-7,-6,-9,-3,-2,0,-4,-9,0,0,0,-5,-8,-7,0,0,0,-6,0,-4,-8,0,-9,-5,0,-8,-1,0,0,-3,0,0,-2,0,-5,0,-1,-8,0,-9,0,-7,-7,-3,-9,-5,-2,-4,-6,-8,-1,-9,-4,0,0,0,-7,0,-1,-8,-5,-2,0,-8,-9,0,-4,-6,-3,-1,-6,0,-4,-3,-2,-7,0,0]'
+            return '[-1,-8,0,-9,0,-7,-7,-3,-9,-5,-2,-4,-6,-8,-1,-9,-4,0,0,0,-7,0,-1,-8,-5,-2,0,-8,-9,0,-4,-6,-3,-1,-6,0,-4,-3,-2,-7,0,0]'
 
 
     # 100 create
@@ -60,9 +60,14 @@ class SolveTest(TestCase):
     #                integrity mismatch
     
     #Happy Path    
-    def test100_010_shouldInsertValueIntoNomialSpace(self):
+    def test900_010_shouldInsertValueIntoNomialSpace(self):
         self.maxDiff = None
         self.setUpDict(self.gridsToCall('1'), '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5')
+        self.assertEqual(sudoku._solve(self.testDict), self.INVALIDGRID)
+        
+    def test900_020_shouldInsertValueIntoNomialSpace(self):
+        self.maxDiff = None
+        self.setUpDict(self.gridsToCall('2'), '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5')
         self.assertEqual(sudoku._solve(self.testDict), self.INVALIDGRID)
         
     '''   
