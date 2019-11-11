@@ -57,7 +57,7 @@ def returnIntegrity(parms, gridIn, returnAndCompare):
     for index in range(len(dictList)):
         stringHash = stringHash + str(dictList[index])
 
-    integrityChecked = hashlib.sha256(stringHash.encode('utf-8')).hexdigest()  
+    integrityChecked = hashlib.sha256(stringHash.encode('utf-8')).hexdigest()
     if (returnAndCompare) and (integrityChecked != integrity):
         return False
     else:
