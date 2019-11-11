@@ -9,7 +9,7 @@ class IsdoneTest(TestCase):
         self.INVALIDLENGTH = {'status': 'error: invalid board length'}
         self.NOTSOLVABLE = {'status':'error: grid not solvable'}
         self.INTEGRITYERROR = {'status':'error: integrity mismatch'}
-        self.INVALIDGRID = {'status':'error: invalid character in grid'}
+        self.INVALIDGRID = {'status':'error: invalid grid'}
         
         
         self.testDict = {}
@@ -41,7 +41,7 @@ class IsdoneTest(TestCase):
         if (gridNumber == '2'):
             return '[-8,-1,-5,-7,-6,-9,-3,-2,0,-4,-9,0,0,0,-5,-8,-7,0,0,0,-6,0,-4,-8,0,-9,-5,0,-8,-1,0,0,-3,0,0,-2,0,-5,0,-1,-8,0,-9,0,-7,-7,-3,-9,-5,-2,-4,-6,-8,-1,-9,-4,0,0,0,-7,0,-1,-8,-5,-2,0,-8,-9,0,-4,-6,-3,-1,-6,0,-4,-3,-2,-7,0,0]'
         if (gridNumber == '3'):
-            return '[-8,-1,-5,-7,-6,-9,-3,-2,8,-4,-9,0,0,0,-5,-8,-7,0,0,0,-6,0,-4,-8,0,-9,-5,0,-8,-1,0,0,-3,0,0,-2,0,-5,0,-1,-8,0,-9,0,-7,-7,-3,-9,-5,-2,-4,-6,-8,-1,-9,-4,0,0,0,-7,0,-1,-8,-5,-2,0,-8,-9,0,-4,-6,-3,-1,-6,0,-4,-3,-2,-7,0,0]'
+            return '[0,-5,-8,-9,0,-1,-6,0,0,-2,0,0,-5,-8,0,0,-4,-1,-9,0,0,0,0,0,0,-5,0,-3,0,-6,-1,-5,0,0,-2,0,-1,-4,0,0,-2,0,-7,0,-9,0,0,0,0,-6,0,-5,0,0,0,-1,-3,-2,0,0,-4,-8,-7,0,0,-4,0,0,-3,0,0,0,-5,0,0,-8,-1,0,-2,0,0]'
         if (gridNumber == '4'):
             return '[a,-1,-5,-7,-6,-9,-3,-2,0,-4,-9,0,0,0,-5,-8,-7,0,0,0,-6,0,-4,-8,0,-9,-5,0,-8,-1,0,0,-3,0,0,-2,0,-5,0,-1,-8,0,-9,0,-7,-7,-3,-9,-5,-2,-4,-6,-8,-1,-9,-4,0,0,0,-7,0,-1,-8,-5,-2,0,-8,-9,0,-4,-6,-3,-1,-6,0,-4,-3,-2,-7,0,0]'
         if (gridNumber == '5'):
@@ -80,7 +80,7 @@ class IsdoneTest(TestCase):
     
     def test100_030_solvingSolvedGrid(self):
         self.maxDiff = None
-        self.setUpDict(self.gridsToCall('3'), 'fb798a9148fd1854800420123530ec8a2f2ef00731d386b26eb69cb4bf9b8ffc')
+        self.setUpDict(self.gridsToCall('3'), '6594d6506dc349fdbd9e5dda58acfa8d563657b0ef8bfc3a24ea53df9c988f9b')
         self.assertEqual(sudoku._isdone(self.testDict), self.INCOMPLETE)   
 
     #Sad Path    
@@ -98,4 +98,3 @@ class IsdoneTest(TestCase):
         self.maxDiff = None
         self.setUpDict(self.gridsToCall('6'), '000000000')
         self.assertEqual(sudoku._isdone(self.testDict), self.INTEGRITYERROR)
-  
