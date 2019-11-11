@@ -55,12 +55,11 @@ class IsdoneTest(TestCase):
     #        inputs:       string
     #        outputs:       dictionary
     #    Happy path analysis:
-    #                answers a solvable grid
+    #                confirms a solvable grid
     #        output:
-    #                The output is from backtracking algorithm within the rules of sudoku
+    #                the status of the board
     #
     #    Sad path analysis:
-    #                not solvable
     #                invalid length
     #                invalid grid
     #                integrity mismatch
