@@ -11,7 +11,7 @@ class SolveTest(TestCase):
         self.INVALIDLENGTH = {'status': 'error: invalid board length'}
         self.NOTSOLVABLE = {'status':'error: grid not solvable'}
         self.INTEGRITYERROR = {'status':'error: integrity mismatch'}
-        self.INVALIDGRID = {'status':'error: invalid grid'}
+        self.INVALIDGRID = {'status':'error: invalid character in grid'}
         
         
         self.testDict = {}
@@ -63,7 +63,7 @@ class SolveTest(TestCase):
     def test100_010_shouldInsertValueIntoNomialSpace(self):
         self.maxDiff = None
         self.setUpDict(self.gridsToCall('1'), '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5')
-        self.assertEqual(sudoku._solve(self.testDict), self.INTEGRITYERROR)
+        self.assertEqual(sudoku._solve(self.testDict), self.INVALIDGRID)
         
     '''   
     def test100_020_shouldRemoveValueFromNomialSpace(self):
