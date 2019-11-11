@@ -38,7 +38,10 @@ class SolveTest(TestCase):
             return '[a,-1,-5,-7,-6,-9,-3,-2,0,-4,-9,0,0,0,-5,-8,-7,0,0,0,-6,0,-4,-8,0,-9,-5,0,-8,-1,0,0,-3,0,0,-2,0,-5,0,-1,-8,0,-9,0,-7,-7,-3,-9,-5,-2,-4,-6,-8,-1,-9,-4,0,0,0,-7,0,-1,-8,-5,-2,0,-8,-9,0,-4,-6,-3,-1,-6,0,-4,-3,-2,-7,0,0]'
         if (gridNumber == '2'):
             return '[-1,-8,0,-9,0,-7,-7,-3,-9,-5,-2,-4,-6,-8,-1,-9,-4,0,0,0,-7,0,-1,-8,-5,-2,0,-8,-9,0,-4,-6,-3,-1,-6,0,-4,-3,-2,-7,0,0]'
-
+        if (gridNumber == '3'):
+            return '[-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, -7, 0, 0, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 0, 0, -2, 0, -5, 0, -1, -8, 0, -9, 0, -7, -7, -3, -9, -5, -2, -4, -6, -8, -1, -9, -4, 0, 0, 0, -7, 0, -1, -8, -5, -2, 0, -8, -9, 0, -4, -6, -3, -1, -6, 0, -4, -3, -2, -7, 0, 0]'
+        if (gridNumber == '4'):
+            return '[-8,-1,-5,-7,-6,-9,-3,-2,8,-4,-9,0,0,0,-5,-8,-7,0,0,0,-6,0,-4,-8,0,-9,-5,0,-8,-1,0,0,-3,0,0,-2,0,-5,0,-1,-8,0,-9,0,-7,-7,-3,-9,-5,-2,-4,-6,-8,-1,-9,-4,0,0,0,-7,0,-1,-8,-5,-2,0,-8,-9,0,-4,-6,-3,-1,-6,0,-4,-3,-2,-7,0,0]'
 
     # 100 create
     #    Desired level of confidence:    correct output on finite inputs
@@ -72,7 +75,12 @@ class SolveTest(TestCase):
         
     def test900_030_shouldInsertValueIntoNomialSpace(self):
         self.maxDiff = None
-        self.setUpDict(self.gridsToCall('1'), '000000000')
+        self.setUpDict(self.gridsToCall('3'), '000000000')
+        self.assertEqual(sudoku._solve(self.testDict), self.INTEGRITYERROR)
+        
+    def test900_040_shouldInsertValueIntoNomialSpace(self):
+        self.maxDiff = None
+        self.setUpDict(self.gridsToCall('4'), 'fb798a9148fd1854800420123530ec8a2f2ef00731d386b26eb69cb4bf9b8ffc')
         self.assertEqual(sudoku._solve(self.testDict), self.INTEGRITYERROR)
         
     '''   
