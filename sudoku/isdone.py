@@ -35,20 +35,20 @@ def _isdone(parms):
         for y in range (1, 10):
             gridPlacement = (9 * (x - 1)) + ((y - 1))
             for i in range(len(grid)):
-                if (abs(grid[gridPlacement]) == abs(grid[i])) and (i != gridPlacement) and (subSet[gridPlacement] == subSet[i]) and (grid[gridPlacement] > 0) and grid[i] > 0:
+                if (abs(grid[gridPlacement]) == abs(grid[i])) and (i != gridPlacement) and (subSet[gridPlacement] == subSet[i]) and (grid[gridPlacement] != 0) and grid[i] != 0:
                     return WARNING
-                elif (int(i / 9) == int(gridPlacement / 9)) and (abs(grid[gridPlacement]) == abs(grid[i])) and (i != gridPlacement) and (grid[gridPlacement] > 0) and grid[i] > 0:
+                elif (int(i / 9) == int(gridPlacement / 9)) and (abs(grid[gridPlacement]) == abs(grid[i])) and (i != gridPlacement) and (grid[gridPlacement] != 0) and grid[i] != 0:
                     return WARNING
 
             #Vertical Search
             gridVerticalSearch = gridPlacement
             while (gridVerticalSearch < 81):
-                if (abs(grid[gridVerticalSearch]) == abs(grid[gridPlacement])) and (gridVerticalSearch != gridPlacement) and (grid[gridVerticalSearch]) != 0:
+                if (abs(grid[gridVerticalSearch]) == abs(grid[gridPlacement])) and (gridVerticalSearch != gridPlacement) and (grid[gridVerticalSearch]) != 0 and grid[gridPlacement] != 0:
                     return WARNING
                 gridVerticalSearch = gridVerticalSearch + 9
             gridVerticalSearch = gridPlacement
             while (gridVerticalSearch > -1):
-                if (abs(grid[gridVerticalSearch]) == abs(grid[gridPlacement])) and (gridVerticalSearch != gridPlacement) and (grid[gridVerticalSearch]) != 0:
+                if (abs(grid[gridVerticalSearch]) == abs(grid[gridPlacement])) and (gridVerticalSearch != gridPlacement) and (grid[gridVerticalSearch]) != 0 and grid[gridPlacement] != 0:
                     return WARNING
                 gridVerticalSearch = gridVerticalSearch - 9   
                 
