@@ -39,7 +39,7 @@ class IsdoneTest(TestCase):
         if (gridNumber == '1'):
             return '[4,-5,-8,-9,3,-1,-6,7,2,-2,3,7,-5,-8,6,9,-4,-1,-9,6,1,7,4,2,3,-5,8,-3,9,-6,-1,-5,7,8,-2,4,-1,-4,5,3,-2,8,-7,6,-9,7,8,2,4,-6,9,-5,1,3,6,-1,-3,-2,9,5,-4,-8,-7,8,2,-4,6,7,-3,1,9,5,-5,7,9,-8,-1,4,-2,3,6]'
         if (gridNumber == '2'):
-            return '[-1,-8,0,-9,0,-7,-7,-3,-9,-5,-2,-4,-6,-8,-1,-9,-4,0,0,0,-7,0,-1,-8,-5,-2,0,-8,-9,0,-4,-6,-3,-1,-6,0,-4,-3,-2,-7,0,0]'
+            return '[-8,-1,-5,-7,-6,-9,-3,-2,0,-4,-9,0,0,0,-5,-8,-7,0,0,0,-6,0,-4,-8,0,-9,-5,0,-8,-1,0,0,-3,0,0,-2,0,-5,0,-1,-8,0,-9,0,-7,-7,-3,-9,-5,-2,-4,-6,-8,-1,-9,-4,0,0,0,-7,0,-1,-8,-5,-2,0,-8,-9,0,-4,-6,-3,-1,-6,0,-4,-3,-2,-7,0,0]'
         if (gridNumber == '3'):
             return '[-8, -1, -5, -7, -6, -9, -3, -2, 0, -4, -9, 0, 0, 0, -5, -8, -7, 0, 0, 0, -6, 0, -4, -8, 0, -9, -5, 0, -8, -1, 0, 0, -3, 0, 0, -2, 0, -5, 0, -1, -8, 0, -9, 0, -7, -7, -3, -9, -5, -2, -4, -6, -8, -1, -9, -4, 0, 0, 0, -7, 0, -1, -8, -5, -2, 0, -8, -9, 0, -4, -6, -3, -1, -6, 0, -4, -3, -2, -7, 0, 0]'
         if (gridNumber == '4'):
@@ -71,12 +71,13 @@ class IsdoneTest(TestCase):
         self.maxDiff = None
         self.setUpDict(self.gridsToCall('1'), 'e33e2de2fdbb25aacf25b299e101cccfdd2e1be4284acc257bcdc76737272af6')
         self.assertEqual(sudoku._isdone(self.testDict), self.SOLVED)    
-    """
+    
     def test100_020_solvingSolvedGrid(self):
         self.maxDiff = None
-        self.setUpDict(self.gridsToCall('2'), 'e33e2de2fdbb25aacf25b299e101cccfdd2e1be4284acc257bcdc76737272af6')
+        self.setUpDict(self.gridsToCall('2'), '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5')
         self.assertEqual(sudoku._isdone(self.testDict), self.INCOMPLETE)
         
+    """
     def test100_020_solvingSolvedGrid(self):
         self.maxDiff = None
         self.setUpDict(self.gridsToCall('3'), 'e33e2de2fdbb25aacf25b299e101cccfdd2e1be4284acc257bcdc76737272af6')
