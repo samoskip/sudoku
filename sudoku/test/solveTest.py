@@ -93,5 +93,5 @@ class SolveTest(TestCase):
         
     def test900_040_gridNotSolavable(self):
         self.maxDiff = None
-        self.setUpDict(self.gridsToCall('4'), 'fb798a9148fd1854800420123530ec8a2f2ef00731d386b26eb69cb4bf9b8ffc')
+        self.setUpDict(self.gridsToCall('4'), '6594d6506dc349fdbd9e5dda58acfa8d563657b0ef8bfc3a24ea53df9c988f9b')
         self.assertEqual(sudoku._solve(self.testDict), self.NOTSOLVABLE)
