@@ -48,6 +48,9 @@ class SolveTest(TestCase):
             return '[-8,-1,-5,-7,-6,-9,-3,-2,8,-4,-9,0,0,0,-5,-8,-7,0,0,0,-6,0,-4,-8,0,-9,-5,0,-8,-1,0,0,-3,0,0,-2,0,-5,0,-1,-8,0,-9,0,-7,-7,-3,-9,-5,-2,-4,-6,-8,-1,-9,-4,0,0,0,-7,0,-1,-8,-5,-2,0,-8,-9,0,-4,-6,-3,-1,-6,0,-4,-3,-2,-7,0,0]'
         if (gridNumber == '5'):
             return '[0,-5,-8,-9,0,-1,-6,0,0,-2,0,0,-5,-8,0,0,-4,-1,-9,0,0,0,0,0,0,-5,0,-3,0,-6,-1,-5,0,0,-2,0,-1,-4,0,0,-2,0,-7,0,-9,0,0,0,0,-6,0,-5,0,0,0,-1,-3,-2,0,0,-4,-8,-7,0,0,-4,0,0,-3,0,0,0,-5,0,0,-8,-1,0,-2,0,0]'
+        if (gridNumber =='6'):
+            return '[4,-5,-8,-9,3,-1,-6,7,2,-2,3,7,-5,-8,6,9,-4,-1,-9,6,1,7,4,2,3,-5,8,-3,9,-6,-1,-5,7,8,-2,4,-1,-4,5,3,-2,8,-7,6,-9,7,8,2,4,-6,9,-5,1,3,6,-1,-3,-2,9,5,-4,-8,-7,8,2,-4,6,7,-3,1,9,5,-5,7,9,-8,-1,4,-2,3,6]'
+    
     # 100 create
     #    Desired level of confidence:    correct output on finite inputs
     #    Input-output Analysis
@@ -65,14 +68,16 @@ class SolveTest(TestCase):
     #                integrity mismatch
     
     
-    
     #Happy Path
-    def test100_010_invalidGirdInput(self):
+    def test100_010_solvingTypicalGrid(self):
         self.maxDiff = None
         self.setUpDict(self.gridsToCall('5'), '6594d6506dc349fdbd9e5dda58acfa8d563657b0ef8bfc3a24ea53df9c988f9b')
         self.assertEqual(sudoku._solve(self.testDict), self.test5Grid)    
     
-    
+    def test100_020_solvingSolvedGrid(self):
+        self.maxDiff = None
+        self.setUpDict(self.gridsToCall('6'), 'e33e2de2fdbb25aacf25b299e101cccfdd2e1be4284acc257bcdc76737272af6')
+        self.assertEqual(sudoku._solve(self.testDict), self.test5Grid)      
     
     
     #Sad Path    
