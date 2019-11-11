@@ -70,10 +70,10 @@ class SolveTest(TestCase):
         self.setUpDict(self.gridsToCall('2'), '634dd6769e9b9a53ee4416edb9790684ac18dcbde5b879260610ff27794b66f5')
         self.assertEqual(sudoku._solve(self.testDict), self.INVALIDLENGTH)
         
-    def test900_020_shouldInsertValueIntoNomialSpace(self):
+    def test900_030_shouldInsertValueIntoNomialSpace(self):
         self.maxDiff = None
         self.setUpDict(self.gridsToCall('1'), '000000000')
-        self.assertEqual(sudoku._solve(self.testDict), self.INVALIDLENGTH)
+        self.assertEqual(sudoku._solve(self.testDict), self.INTEGRITYERROR)
         
     '''   
     def test100_020_shouldRemoveValueFromNomialSpace(self):
